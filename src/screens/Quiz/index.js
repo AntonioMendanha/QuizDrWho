@@ -1,13 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+// import db from '../../../db.json';
 
-import db from '../db.json';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizContainer from '../src/components/QuizContainer';
-import QuizLogo from '../src/components/QuizLogo';
-import Widget from '../src/components/Widget';
-import Button from '../src/components/Button';
-import GitHubCorner from '../src/components/GitHubCorner';
-import AlternativesForms from '../src/components/AlternativesForms';
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import QuizLogo from '../../components/QuizLogo';
+import Widget from '../../components/Widget';
+import Button from '../../components/Button';
+import GitHubCorner from '../../components/GitHubCorner';
+import AlternativesForms from '../../components/AlternativesForms';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 function ResultWidget({ results }) {
   return (
@@ -65,12 +67,12 @@ function QuestionWidget({
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
-  const hasSelectedAlternative = setSelectedAlternative !== undefined;
+  const hasSelectedAlternative = selectedAlternative !== undefined;
 
   return (
     <Widget>
       <Widget.Header>
-        {/** <BacklinkArrow href="/"/> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -91,6 +93,7 @@ function QuestionWidget({
         <AlternativesForms
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
+            onSubmit();
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
@@ -129,10 +132,6 @@ function QuestionWidget({
           >
             Responder
           </Button>
-          <pre>
-            {JSON.stringify(question.answer)}
-            {JSON.stringify(` selecionado ${selectedAlternative}`)}
-          </pre>
           {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
           {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
 
@@ -148,13 +147,14 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-export default function QuizPage() {
+export default function QuizPage({ externalQuestions, externalBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = db.questions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = db.questions[questionIndex];
+  const question = externalQuestions[questionIndex];
+  const totalQuestions = externalQuestions.length;
+  const bg = externalBg;
 
   function addResult(result) {
     setResults([
@@ -179,7 +179,7 @@ export default function QuizPage() {
   }
 
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={bg}>
       <QuizContainer>
         <QuizLogo />
 
