@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { motion } from 'framer-motion';
 // import db from '../../../db.json';
 
 import QuizBackground from '../../components/QuizBackground';
@@ -14,9 +15,12 @@ import BackLinkArrow from '../../components/BackLinkArrow';
 function ResultWidget({ results }) {
   return (
     <Widget>
-      <Widget.Header>Resultado</Widget.Header>
+      <Widget.Header>
+        <BackLinkArrow href="/" />
+        Resultado
+      </Widget.Header>
       <Widget.Content>
-        <p>
+        <h4>
           Você acertou
           {' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
@@ -28,7 +32,7 @@ function ResultWidget({ results }) {
           }, 0)}
           {' '}
           perguntas
-        </p>
+        </h4>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
@@ -51,7 +55,18 @@ function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>Carregando</Widget.Header>
-      <Widget.Content>[Desafio de Loading]</Widget.Content>
+      <Widget.Content
+        as={motion.section}
+        transition={{ delay: 0, duration: 1.0 }}
+        variants={{
+          show: { opacity: 1, y: '0' },
+          hidden: { opacity: 0, y: '100%' },
+        }}
+        initial="hidden"
+        animate="show"
+      >
+        [Mudança Desafio de Loading]
+      </Widget.Content>
     </Widget>
   );
 }
@@ -93,14 +108,13 @@ function QuestionWidget({
         <AlternativesForms
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
-            onSubmit();
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
-              onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-            }, 3 * 1000);
+              onSubmit();
+            }, 2 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {

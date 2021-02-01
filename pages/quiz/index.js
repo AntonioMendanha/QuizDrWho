@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { motion } from 'framer-motion';
 import db from '../../db.json';
 
 import QuizBackground from '../../src/components/QuizBackground';
@@ -20,7 +21,7 @@ function ResultWidget({ results }) {
       </Widget.Header>
 
       <Widget.Content>
-        <p>
+        <h4>
           Você acertou
           {' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
@@ -32,7 +33,7 @@ function ResultWidget({ results }) {
           }, 0)}
           {' '}
           perguntas
-        </p>
+        </h4>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
@@ -55,7 +56,18 @@ function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>Carregando</Widget.Header>
-      <Widget.Content>[Desafio de Loading]</Widget.Content>
+      <Widget.Content
+        as={motion.section}
+        transition={{ delay: 0, duration: 3.0 }}
+        variants={{
+          show: { opacity: 1, y: '0' },
+          hidden: { opacity: 0, y: '100%' },
+        }}
+        initial="hidden"
+        animate="show"
+      >
+        [Pronto - Vamos jogar!]
+      </Widget.Content>
     </Widget>
   );
 }
@@ -97,14 +109,13 @@ function QuestionWidget({
         <AlternativesForms
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
-            onSubmit();
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
-              onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-            }, 3 * 1000);
+              onSubmit();
+            }, 2 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -120,11 +131,12 @@ function QuestionWidget({
                 data-status={isQuestionSubmited && alternativeStatus}
               >
                 <input
-                  style={{ display: 'none' }}
+                  // style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
+                  disable="true"
                 />
                 {alternative}
               </Widget.Topic>
@@ -170,7 +182,7 @@ export default function QuizPage() {
   React.useState(() => {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 4 * 1000);
   }, []);
 
   function handleSubmitQuiz() {

@@ -4,7 +4,7 @@
     "description": "Neste teste vamos testar seus conhecimentos básicos da série Doctor Who",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+        "image": "https://media.giphy.com/media/5UIjPElvccqNOSMavc/giphy.gif",
         "title": "Doctor Who é uma série ...",
         "description": "Nível fácil",
         "answer": 1,
@@ -16,7 +16,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/LoTIa3iTynZhZZyPJX/giphy.gif",
         "title": "Qual a raça do Doctor?",
         "description": "Nível fácil",
         "answer": 0,
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/3o752c04WjDrdC0yHe/giphy.gif",
         "title": "Quantos corações o Doctor tem?",
         "description": "Nível intermediário",
         "answer": 2,
@@ -40,7 +40,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/pbj6yHt6rcyli/giphy.gif",
         "title": "Como o Doctor viaja?",
         "description": "Nível intermediário",
         "answer": 3,
@@ -52,7 +52,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/rJY9OQDSDXBEA/giphy.gif",
         "title": "O que é um companion?",
         "description": "Nível intermediário",
         "answer": 1,
@@ -64,7 +64,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/RIMLnKKlrgDpMYuQAG/giphy.gif",
         "title": "Qual das alternativas abaixo são usadas pelo Doctor?",
         "description": "Nível difícil",
         "answer": 1,
@@ -76,7 +76,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/25A17crsUbYje/giphy.gif",
         "title": "Qual das alternativas abaixo é um personagem que já foi amigo do Doctor? ",
         "description": "Nível difícil",
         "answer": 3,
@@ -88,7 +88,7 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "image": "https://media.giphy.com/media/KGfLabuM8xi7F3mXoY/giphy.gif",
         "title": "Como o Capitão Jack também é conhecido? ",
         "description": "Nível difícil",
         "answer": 3,

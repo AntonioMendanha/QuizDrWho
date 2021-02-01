@@ -23,7 +23,7 @@ export default function Home() {
         <QuizLogo />
         <Widget
           as={motion.section}
-          transitio={{ delay: 0, duration: 0.5 }}
+          transition={{ delay: 0, duration: 1.0 }}
           variants={{
             show: { opacity: 1, y: '0' },
             hidden: { opacity: 0, y: '100%' },
@@ -36,7 +36,7 @@ export default function Home() {
           </Widget.Header>
 
           <Widget.Content>
-            <p>What do you know about Dr. Who Universe?</p>
+            <p>Um rápido quiz sobre o Doctor Who Universe?</p>
             <form onSubmit={(infosDoEvento) => {
               infosDoEvento.preventDefault();
               router.push(`/quiz?name=${name}`);
@@ -57,7 +57,7 @@ export default function Home() {
 
         <Widget
           as={motion.section}
-          transitio={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 1.5 }}
           variants={{
             show: { opacity: 1 },
             hidden: { opacity: 0 },
